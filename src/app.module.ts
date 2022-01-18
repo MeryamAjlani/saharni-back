@@ -4,13 +4,14 @@ import { AppService } from './app.service';
 import { AuthentificationModule } from './authentification/authentification.module';
 import { TypeOrmCoreModule } from '@nestjs/typeorm/dist/typeorm-core.module';
 import * as dotenv from 'dotenv';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 dotenv.config();
 
 @Module({
   imports: [
     AuthentificationModule,
-    TypeOrmCoreModule.forRoot(
+    TypeOrmModule.forRoot(
       {
         type: 'mysql',
         host: process.env.DB_HOST,
@@ -18,7 +19,7 @@ dotenv.config();
         username: process.env.DB_USER,
         password: process.env.DB_PASSWORD,
         database: process.env.DB_NAME,
-        entities: [],
+        entities: ["dist/**/*.entity{.ts,.js}"],
         synchronize: true,
       }
     )

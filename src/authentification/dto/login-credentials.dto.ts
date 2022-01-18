@@ -5,7 +5,7 @@ export class LoginCredentialsDto{
 
   @IsString()
   @IsNotBlank({message : 'Email/Phone number field can\'t be blank'})
-  email_or_phone : string;
+  email : string;
 
   @IsString()
   @IsNotBlank({message : 'Password field can\'t be blank'})
