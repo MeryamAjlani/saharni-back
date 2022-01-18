@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthentificationModule } from './authentification/authentification.module';
-import { TypeOrmCoreModule } from '@nestjs/typeorm/dist/typeorm-core.module';
 import * as dotenv from 'dotenv';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
