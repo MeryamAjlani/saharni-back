@@ -40,7 +40,6 @@ export class Party extends BaseEntity {
   constructor(
     name: string,
     description:string,
-    rate:number,
     price:number,
     bar:Bar,
     imageUrl:string,
