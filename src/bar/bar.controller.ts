@@ -68,8 +68,12 @@ export class BarController {
     this.barService.removeBar(idBar);
   }
   @Delete('removeParty/:idParty')
-   removeParty(@Param('idParty') idParty){
-    this.barService.removeParty(idParty);
+   async removeParty(@Param('idParty') idParty,@GetUser() owner: Owner){
+    let party =await this.barService.findPartyById(idParty);
+    let bar = await this.barService.findBarById(party.bar.id)
+    if(!bar || bar.owner.id!= owner.id )
+      throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
+    else this.barService.removeParty(idParty);
   }
 
 
