@@ -6,6 +6,7 @@ import { Bar } from './entities/bar.entity';
 import { Owner } from '../authentification/entities/owner.entity';
 import { BarRepository } from './repositories/bar.repository';
 import { PartyRepository } from './repositories/party.repository';
+import { PartyCreationDto } from './dto/party-creation.dto';
 
 @Injectable()
 export class BarService {
@@ -25,6 +26,15 @@ export class BarService {
     Owner.save(owner);
     return;
   }
+
+  //add party
+    async addParty(partyCreationDto : PartyCreationDto , bar: Bar){
+      const party = await this.partyRepository.create(partyCreationDto);
+      bar.parties.push(party);
+      Party.save(party);
+      return;
+    }
+
   //list all bars
   async findAllBars():Promise<Bar[]>{
     return this.customBarRepository.findAll();
@@ -58,8 +68,8 @@ export class BarService {
     return this.barRepository.softDelete(id);
   }
 
-  // remove restaurant
-  async removeRestaurant(id:number){
+  // remove party
+  async removeParty(id:number){
     return this.partyRepository.softDelete(id);
   }
 }
