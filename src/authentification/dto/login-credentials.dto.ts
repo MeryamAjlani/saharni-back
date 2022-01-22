@@ -4,7 +4,7 @@ import { IsNotBlank } from "../../custom-validators/isNotBlank.validator";
 export class LoginCredentialsDto{
 
   @IsString()
-  @IsNotBlank({message : 'Email/Phone number field can\'t be blank'})
+  @IsNotBlank({message : 'Email field can\'t be blank'})
   email : string;
 
   @IsString()

@@ -2,11 +2,12 @@ import {
   BaseEntity,
   Column,
   CreateDateColumn,
-  Entity,
+  Entity, JoinColumn, OneToOne,
   PrimaryGeneratedColumn,
-  UpdateDateColumn
-} from "typeorm";
+  UpdateDateColumn,
+} from 'typeorm';
 import { UserRole } from "./roles.enum";
+import { Bar } from '../../bar/entities/bar.entity';
 
 
 @Entity()
@@ -43,6 +44,10 @@ export class Owner extends BaseEntity {
 
   @UpdateDateColumn({ name: 'updated_at' })
   UpdatedAt: Date;
+
+  @OneToOne(() => Bar,bar=>bar.owner)
+  @JoinColumn()
+  bar: Bar;
 
   constructor(
     firstName: string,

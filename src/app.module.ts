@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { AuthentificationModule } from './authentification/authentification.module';
 import * as dotenv from 'dotenv';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { BarModule } from './bar/bar.module';
 
 dotenv.config();
 
@@ -21,7 +22,8 @@ dotenv.config();
         entities: ["dist/**/*.entity{.ts,.js}"],
         synchronize: true,
       }
-    )
+    ),
+    BarModule
   ],
   controllers: [AppController],
   providers: [AppService],
