@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { UserRole } from "./roles.enum";
+import { UserRole } from './roles.enum';
 
 @Entity()
 export class Client extends BaseEntity {
@@ -19,7 +19,7 @@ export class Client extends BaseEntity {
   @Column()
   lastName: string;
 
-  @Column({nullable:false, unique : true})
+  @Column({ nullable: false, unique: true })
   email: string;
 
   @Column('boolean', { default: false })
@@ -41,7 +41,6 @@ export class Client extends BaseEntity {
   @UpdateDateColumn({ name: 'updated_at' })
   UpdatedAt: Date;
 
-
   constructor(
     firstName: string,
     lastName: string,
@@ -54,6 +53,5 @@ export class Client extends BaseEntity {
     this.email = email;
     this.password = password;
     this.role = UserRole.CLIENT;
-
   }
 }
