@@ -4,10 +4,9 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
-  UpdateDateColumn
-} from "typeorm";
-import { UserRole } from "./roles.enum";
-
+  UpdateDateColumn,
+} from 'typeorm';
+import { UserRole } from './roles.enum';
 
 @Entity()
 export class Owner extends BaseEntity {
@@ -20,7 +19,7 @@ export class Owner extends BaseEntity {
   @Column()
   lastName: string;
 
-  @Column({nullable:false, unique : true})
+  @Column({ nullable: false, unique: true })
   email: string;
 
   @Column('boolean', { default: false })
@@ -29,14 +28,12 @@ export class Owner extends BaseEntity {
   @Column()
   password: string;
 
-
   @Column({
     type: 'enum',
     enum: UserRole,
     default: UserRole.OWNER,
   })
   role: UserRole;
-
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

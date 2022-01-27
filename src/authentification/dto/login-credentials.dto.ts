@@ -1,14 +1,12 @@
-import { IsString } from "class-validator";
-import { IsNotBlank } from "../../custom-validators/isNotBlank.validator";
+import { IsString } from 'class-validator';
+import { IsNotBlank } from '../../custom-validators/isNotBlank.validator';
 
-export class LoginCredentialsDto{
+export class LoginCredentialsDto {
+  @IsString()
+  @IsNotBlank({ message: "Email/Phone number field can't be blank" })
+  email: string;
 
   @IsString()
-  @IsNotBlank({message : 'Email/Phone number field can\'t be blank'})
-  email : string;
-
-  @IsString()
-  @IsNotBlank({message : 'Password field can\'t be blank'})
-  password : string;
-
+  @IsNotBlank({ message: "Password field can't be blank" })
+  password: string;
 }
